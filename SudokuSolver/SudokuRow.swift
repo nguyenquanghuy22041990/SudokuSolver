@@ -11,6 +11,8 @@ struct SudokuRow: View {
     
     @Binding var sudokuRow: [String]
     
+    @Binding var textColors: [Color]
+    
     var body: some View {
         // 1 row
         VStack {
@@ -19,11 +21,11 @@ struct SudokuRow: View {
         
                 Group {
                 
-                    CellTextField(cellValue: $sudokuRow[0])
+                    CellTextField(cellValue: $sudokuRow[0], textColor: $textColors[0])
                     
-                    CellTextField(cellValue: $sudokuRow[1])
+                    CellTextField(cellValue: $sudokuRow[1], textColor: $textColors[1])
                     
-                    CellTextField(cellValue: $sudokuRow[2])
+                    CellTextField(cellValue: $sudokuRow[2], textColor: $textColors[2])
                     
                 }
                 
@@ -34,11 +36,11 @@ struct SudokuRow: View {
                 
                 Group {
 
-                    CellTextField(cellValue: $sudokuRow[3])
+                    CellTextField(cellValue: $sudokuRow[3], textColor: $textColors[3])
                     
-                    CellTextField(cellValue: $sudokuRow[4])
+                    CellTextField(cellValue: $sudokuRow[4], textColor: $textColors[4])
                     
-                    CellTextField(cellValue: $sudokuRow[5])
+                    CellTextField(cellValue: $sudokuRow[5], textColor: $textColors[5])
         
                 }
             
@@ -50,11 +52,11 @@ struct SudokuRow: View {
                 
                 Group {
                 
-                    CellTextField(cellValue: $sudokuRow[6])
+                    CellTextField(cellValue: $sudokuRow[6], textColor: $textColors[6])
                     
-                    CellTextField(cellValue: $sudokuRow[7])
+                    CellTextField(cellValue: $sudokuRow[7], textColor: $textColors[7])
                     
-                    CellTextField(cellValue: $sudokuRow[8])
+                    CellTextField(cellValue: $sudokuRow[8], textColor: $textColors[8])
                     
                 }
 
@@ -72,7 +74,10 @@ struct SudokuRow: View {
 
 struct SudokuRow_Previews: PreviewProvider {
     @State static var sudokuRow: [String] = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    
+    @State static var textColors: [Color] = [Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.red]
+    
     static var previews: some View {
-        SudokuRow(sudokuRow: $sudokuRow)
+        SudokuRow(sudokuRow: $sudokuRow, textColors: $textColors)
     }
 }

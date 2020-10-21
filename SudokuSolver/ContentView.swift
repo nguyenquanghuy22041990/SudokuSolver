@@ -21,6 +21,18 @@ struct ContentView: View {
         ["", "", "", "", "", "", "", "", ""]
     ]
     
+    @State var textColors: [[Color]] = [
+        [Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black],
+        [Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black],
+        [Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black],
+        [Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black],
+        [Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black],
+        [Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black],
+        [Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black],
+        [Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black],
+        [Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black]
+    ]
+    
     @State private var cellHeight = (UIScreen.main.bounds.width - 2 - 8)/9
 
     
@@ -39,14 +51,14 @@ struct ContentView: View {
             VStack {
                 
                 // 1 row
-                SudokuRow(sudokuRow: $sudokuCells[0])
+                SudokuRow(sudokuRow: $sudokuCells[0], textColors: $textColors[0])
 
                 // 1 row
-                SudokuRow(sudokuRow: $sudokuCells[1])
+                SudokuRow(sudokuRow: $sudokuCells[1], textColors: $textColors[1])
 
 
                 // 1 row
-                SudokuRow(sudokuRow: $sudokuCells[2])
+                SudokuRow(sudokuRow: $sudokuCells[2], textColors: $textColors[2])
                 
                 
             
@@ -65,14 +77,14 @@ struct ContentView: View {
             VStack {
                 
                 // 1 row
-               SudokuRow(sudokuRow: $sudokuCells[3])
+               SudokuRow(sudokuRow: $sudokuCells[3], textColors: $textColors[3])
 
                 // 1 row
-                SudokuRow(sudokuRow: $sudokuCells[4])
+                SudokuRow(sudokuRow: $sudokuCells[4], textColors: $textColors[4])
 
 
                 // 1 row
-                SudokuRow(sudokuRow: $sudokuCells[5])
+                SudokuRow(sudokuRow: $sudokuCells[5], textColors: $textColors[5])
                 
             }
             
@@ -90,13 +102,13 @@ struct ContentView: View {
         
             VStack {
                 // 1 row
-                SudokuRow(sudokuRow: $sudokuCells[6])
+                SudokuRow(sudokuRow: $sudokuCells[6], textColors: $textColors[6])
                 
                 // 1 row
-                SudokuRow(sudokuRow: $sudokuCells[7])
+                SudokuRow(sudokuRow: $sudokuCells[7], textColors: $textColors[7])
 
                 // 1 row
-                SudokuRow(sudokuRow: $sudokuCells[8])
+                SudokuRow(sudokuRow: $sudokuCells[8], textColors: $textColors[8])
                 
             }
             
@@ -112,6 +124,21 @@ struct ContentView: View {
             HStack {
                 Button(action: {
                     
+                    SudokuSolverAlgorithm.convertTable(stringTable: sudokuCells)
+                    SudokuSolverAlgorithm.solve()
+                    
+                    for i in 0 ..< 9 {
+                        for j in 0 ..< 9 {
+                            
+                            if (sudokuCells[i][j] == "") {
+                                textColors[i][j] = Color.red
+                            } else {
+                                textColors[i][j] = Color.black
+                            }
+                            
+                            sudokuCells[i][j] = SudokuSolverAlgorithm.getStringValueAtIndex(row: i, col: j)
+                        }
+                    }
                     
                 }, label: {
                     Text("Solve")
@@ -123,7 +150,12 @@ struct ContentView: View {
                 .cornerRadius(6.0)
                 
                 Button(action: {
-                    
+                    for i in 0 ..< 9 {
+                        for j in 0 ..< 9 {
+                            sudokuCells[i][j] = ""
+                            textColors[i][j] = Color.black
+                        }
+                    }
                 }, label: {
                     Text("Clear")
                         .foregroundColor(.white)
