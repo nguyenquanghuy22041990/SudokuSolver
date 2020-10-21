@@ -124,21 +124,33 @@ struct ContentView: View {
             HStack {
                 Button(action: {
                     
-                    SudokuSolverAlgorithm.convertTable(stringTable: sudokuCells)
-                    SudokuSolverAlgorithm.solve()
-                    
-                    for i in 0 ..< 9 {
-                        for j in 0 ..< 9 {
+                    DispatchQueue.global(qos: .background).async {
+                        print("This is run on the background queue")
+                        
+                        SudokuSolverAlgorithm.convertTable(stringTable: sudokuCells)
+                        SudokuSolverAlgorithm.solve()
+                        
+
+                        DispatchQueue.main.async {
+                            print("This is run on the main queue, after the previous code in outer block")
                             
-                            if (sudokuCells[i][j] == "") {
-                                textColors[i][j] = Color.red
-                            } else {
-                                textColors[i][j] = Color.black
+                            for i in 0 ..< 9 {
+                                for j in 0 ..< 9 {
+                                    
+                                    if (sudokuCells[i][j] == "") {
+                                        textColors[i][j] = Color.red
+                                    } else {
+                                        textColors[i][j] = Color.black
+                                    }
+                                    
+                                    sudokuCells[i][j] = SudokuSolverAlgorithm.getStringValueAtIndex(row: i, col: j)
+                                }
                             }
-                            
-                            sudokuCells[i][j] = SudokuSolverAlgorithm.getStringValueAtIndex(row: i, col: j)
                         }
                     }
+                    
+                   
+                    
                     
                 }, label: {
                     Text("Solve")
@@ -166,9 +178,10 @@ struct ContentView: View {
                 .cornerRadius(6.0)
                 
             }
+            
+            
 
-    }
-        
+        }
     }
     
     
