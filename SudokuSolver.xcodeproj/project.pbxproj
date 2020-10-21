@@ -101,11 +101,11 @@
 			children = (
 				141AC80D253C7004007BFB02 /* SudokuSolverApp.swift */,
 				141AC80F253C7004007BFB02 /* ContentView.swift */,
+				141AC846253C9C9F007BFB02 /* SudokuRow.swift */,
 				141AC83E253C99E0007BFB02 /* CellTextField.swift */,
 				141AC811253C7005007BFB02 /* Assets.xcassets */,
 				141AC816253C7005007BFB02 /* Info.plist */,
 				141AC813253C7005007BFB02 /* Preview Content */,
-				141AC846253C9C9F007BFB02 /* SudokuRow.swift */,
 			);
 			path = SudokuSolver;
 			sourceTree = "<group>";

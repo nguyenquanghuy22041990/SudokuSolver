@@ -9,10 +9,10 @@ import SwiftUI
 
 struct CellTextField: View {
     @State private var cellHeight = (UIScreen.main.bounds.width - 2 - 8)/9
-    @State var cellValue: Int
+    @Binding var cellValue: String
     var body: some View {
         HStack {
-            TextField( "", value: $cellValue, formatter: NumberFormatter())
+            TextField( "", text: $cellValue)
                     .frame(height: cellHeight)
                     .multilineTextAlignment(.center)
         }
@@ -23,8 +23,8 @@ struct CellTextField: View {
 
 struct CellTextField_Previews: PreviewProvider {
     
-    @State static var value: Int = 1
+    @State static var value: String = "1"
     static var previews: some View {
-        CellTextField(cellValue: value)
+        CellTextField(cellValue: $value)
     }
 }

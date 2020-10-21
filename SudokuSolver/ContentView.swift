@@ -9,16 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var sudokuCells: [[Int]] = [
-        [1, 1, 1, 1, 1, 1, 1, 1, 1],
-                                               [1, 1, 1, 1, 1, 1, 1, 1, 1],
-                                               [1, 1, 1, 1, 1, 1, 1, 1, 1],
-                                               [1, 1, 1, 1, 1, 1, 1, 1, 1],
-                                               [1, 1, 1, 1, 1, 1, 1, 1, 1],
-                                               [1, 1, 1, 1, 1, 1, 1, 1, 1],
-                                               [1, 1, 1, 1, 1, 1, 1, 1, 1],
-                                               [1, 1, 1, 1, 1, 1, 1, 1, 1],
-                                               [1, 1, 1, 1, 1, 1, 1, 1, 1]
+    @State var sudokuCells: [[String]] = [
+        ["", "", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", "", ""]
     ]
     
     @State private var cellHeight = (UIScreen.main.bounds.width - 2 - 8)/9
@@ -39,15 +39,17 @@ struct ContentView: View {
             VStack {
                 
                 // 1 row
-                SudokuRow()
-                
+                SudokuRow(sudokuRow: $sudokuCells[0])
+
                 // 1 row
-                SudokuRow()
-                
-                
+                SudokuRow(sudokuRow: $sudokuCells[1])
+
+
                 // 1 row
-                SudokuRow()
+                SudokuRow(sudokuRow: $sudokuCells[2])
                 
+                
+            
             }
             
             
@@ -63,14 +65,14 @@ struct ContentView: View {
             VStack {
                 
                 // 1 row
-                SudokuRow()
-                
+               SudokuRow(sudokuRow: $sudokuCells[3])
+
                 // 1 row
-                SudokuRow()
-                
-                
+                SudokuRow(sudokuRow: $sudokuCells[4])
+
+
                 // 1 row
-                SudokuRow()
+                SudokuRow(sudokuRow: $sudokuCells[5])
                 
             }
             
@@ -88,13 +90,13 @@ struct ContentView: View {
         
             VStack {
                 // 1 row
-                SudokuRow()
+                SudokuRow(sudokuRow: $sudokuCells[6])
                 
                 // 1 row
-                SudokuRow()
-                
+                SudokuRow(sudokuRow: $sudokuCells[7])
+
                 // 1 row
-                SudokuRow()
+                SudokuRow(sudokuRow: $sudokuCells[8])
                 
             }
             
@@ -108,7 +110,10 @@ struct ContentView: View {
         }.background(Color.yellow) //end of parent vertical stack
             
             HStack {
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {
+                    
+                    
+                }, label: {
                     Text("Solve")
                         .foregroundColor(.white)
                         .padding(/*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
@@ -117,7 +122,9 @@ struct ContentView: View {
                 .background(Color.blue)
                 .cornerRadius(6.0)
                 
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {
+                    
+                }, label: {
                     Text("Clear")
                         .foregroundColor(.white)
                         .padding(/*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)

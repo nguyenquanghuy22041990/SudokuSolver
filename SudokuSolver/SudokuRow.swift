@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SudokuRow: View {
+    
+    @Binding var sudokuRow: [String]
+    
     var body: some View {
         // 1 row
         VStack {
@@ -16,11 +19,11 @@ struct SudokuRow: View {
         
                 Group {
                 
-                    CellTextField(cellValue: 1)
+                    CellTextField(cellValue: $sudokuRow[0])
                     
-                    CellTextField(cellValue: 1)
+                    CellTextField(cellValue: $sudokuRow[1])
                     
-                    CellTextField(cellValue: 1)
+                    CellTextField(cellValue: $sudokuRow[2])
                     
                 }
                 
@@ -31,11 +34,11 @@ struct SudokuRow: View {
                 
                 Group {
 
-                    CellTextField(cellValue: 1)
+                    CellTextField(cellValue: $sudokuRow[3])
                     
-                    CellTextField(cellValue: 1)
+                    CellTextField(cellValue: $sudokuRow[4])
                     
-                    CellTextField(cellValue: 1)
+                    CellTextField(cellValue: $sudokuRow[5])
         
                 }
             
@@ -43,15 +46,15 @@ struct SudokuRow: View {
                 // Black divider
                 HStack {
                     
-                }.frame(width: 1)
+                }.frame(width: 2)
                 
                 Group {
                 
-                    CellTextField(cellValue: 1)
+                    CellTextField(cellValue: $sudokuRow[6])
                     
-                    CellTextField(cellValue: 1)
+                    CellTextField(cellValue: $sudokuRow[7])
                     
-                    CellTextField(cellValue: 1)
+                    CellTextField(cellValue: $sudokuRow[8])
                     
                 }
 
@@ -68,7 +71,8 @@ struct SudokuRow: View {
 }
 
 struct SudokuRow_Previews: PreviewProvider {
+    @State static var sudokuRow: [String] = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     static var previews: some View {
-        SudokuRow()
+        SudokuRow(sudokuRow: $sudokuRow)
     }
 }
