@@ -8,15 +8,24 @@
 import SwiftUI
 
 struct CellTextField: View {
-    @State private var cellHeight = (UIScreen.main.bounds.width - 2 - 8)/9
-    @Binding var cellValue: String
-    @Binding var textColor: Color
+    var cellHeight = (UIScreen.main.bounds.width - 26)/9
+    
+    @ObservedObject var cellObject: CellObject
+    
     var body: some View {
         HStack {
-            TextField( "", text: $cellValue)
+            TextField( "", text: $cellObject.entry)
                     .frame(height: cellHeight)
                     .multilineTextAlignment(.center)
-                .foregroundColor(textColor)
+                .foregroundColor(cellObject.textColor)
+                .keyboardType(.numberPad)
+                .lineLimit(1)
+                .onChange(of: cellObject.entry, perform: { value in
+                    
+                    if cellObject.entry.count > 1 {
+                        cellObject.entry = cellObject.entry[cellObject.entry.startIndex].description
+                    }
+                })
         }
         .padding(0.0)
         .background(Color.white)
@@ -25,9 +34,9 @@ struct CellTextField: View {
 
 struct CellTextField_Previews: PreviewProvider {
     
-    @State static var value: String = "1"
-    @State static var textColor: Color = Color.black
+    @State static var cellObject = CellObject(cellValue: "2", inputTextColor: Color.black)
+    
     static var previews: some View {
-        CellTextField(cellValue: $value, textColor: $textColor)
+        CellTextField(cellObject: cellObject)
     }
 }

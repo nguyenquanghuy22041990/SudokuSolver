@@ -16,6 +16,7 @@
 		141AC83F253C99E0007BFB02 /* CellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141AC83E253C99E0007BFB02 /* CellTextField.swift */; };
 		141AC847253C9C9F007BFB02 /* SudokuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141AC846253C9C9F007BFB02 /* SudokuRow.swift */; };
 		146B04B02540894C007EE77D /* SudokuSolverAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146B04AF2540894C007EE77D /* SudokuSolverAlgorithm.swift */; };
+		14BAE975254322E500F088C9 /* CellObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BAE974254322E500F088C9 /* CellObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		141AC83E253C99E0007BFB02 /* CellTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTextField.swift; sourceTree = "<group>"; };
 		141AC846253C9C9F007BFB02 /* SudokuRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuRow.swift; sourceTree = "<group>"; };
 		146B04AF2540894C007EE77D /* SudokuSolverAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuSolverAlgorithm.swift; sourceTree = "<group>"; };
+		14BAE974254322E500F088C9 /* CellObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				141AC811253C7005007BFB02 /* Assets.xcassets */,
 				141AC816253C7005007BFB02 /* Info.plist */,
 				141AC813253C7005007BFB02 /* Preview Content */,
+				14BAE974254322E500F088C9 /* CellObject.swift */,
 			);
 			path = SudokuSolver;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				141AC810253C7004007BFB02 /* ContentView.swift in Sources */,
 				141AC847253C9C9F007BFB02 /* SudokuRow.swift in Sources */,
 				141AC80E253C7004007BFB02 /* SudokuSolverApp.swift in Sources */,
+				14BAE975254322E500F088C9 /* CellObject.swift in Sources */,
 				141AC83F253C99E0007BFB02 /* CellTextField.swift in Sources */,
 				146B04B02540894C007EE77D /* SudokuSolverAlgorithm.swift in Sources */,
 			);

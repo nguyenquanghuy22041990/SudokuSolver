@@ -24,14 +24,14 @@ class SudokuSolverAlgorithm: NSObject {
     
     static var stepCount:Int = 0
     
-    static func convertTable(stringTable:[[String]]!) {
+    static func convertTable(stringTable:[[CellObject]]!) {
         
         for i in 0 ..< 9 {
             for j in 0 ..< 9 {
-                if (stringTable[i][j] == "") {
+                if (stringTable[i][j].entry == "") {
                     table[i][j] = 0
                 } else {
-                    table[i][j] = Int(stringTable[i][j])!
+                    table[i][j] = Int(stringTable[i][j].entry)!
                 }
             }
         }
@@ -166,5 +166,15 @@ class SudokuSolverAlgorithm: NSObject {
         print("Solved table after steps:", stepCount)
 
         print(table)
+    }
+    
+    static func solveSudoku(stringTable:[[CellObject]]!) -> Bool{
+        convertTable(stringTable: stringTable)
+        
+        if (!checkValidSudoku(table: table)) {
+            return false
+        }
+        
+        return solve()
     }
 }
